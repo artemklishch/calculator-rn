@@ -2,6 +2,7 @@ import React from "react";
 import { View } from "react-native";
 import styles from "./rowBtnsBlockStyles";
 import Button from "./Button";
+import PropTypes from "prop-types";
 
 const RowBtnsBlock = ({ btnsValues, handleClick }) => {
   return (
@@ -19,3 +20,8 @@ const RowBtnsBlock = ({ btnsValues, handleClick }) => {
 };
 
 export default RowBtnsBlock;
+
+RowBtnsBlock.propTypes = {
+  btnsValues: PropTypes.array.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};

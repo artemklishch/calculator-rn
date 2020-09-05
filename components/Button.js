@@ -1,6 +1,7 @@
 import React from "react";
 import { Text, TouchableOpacity } from "react-native";
 import styles from "./buttonStyles";
+import PropTypes from "prop-types";
 
 const Button = ({ btnValue, style, handleClick }) => {
   return (
@@ -14,3 +15,9 @@ const Button = ({ btnValue, style, handleClick }) => {
   );
 };
 export default Button;
+
+Button.propTypes = {
+  style: PropTypes.any.isRequired,
+  btnValue: PropTypes.string.isRequired,
+  handleClick: PropTypes.func.isRequired,
+};
