@@ -115,14 +115,19 @@ export const calcFunc = (startValue, value) => {
     const result = calcOperatingFunc(calcData.calc[0], calcData.calc[1], calcData.calc[2]);
     calcData.calc[0] = result;
     calcData.string = String(result);
+    calcData.wasCalc = true
   }
   //when there are first value, chosen operator, second value, and pressed operator
-  else if (calcData.calc.length === 3 && isOperator) {
+  else if (calcData.calc.length === 3 && isOperator && !calcData.wasCalc) {
     const result = calcOperatingFunc(calcData.calc[0], calcData.calc[1], calcData.calc[2]);
     calcData.string = String(result);
     calcData.calc = [result, value];
     calcData.wasCalc = true;
+  } else if (calcData.calc.length === 3 && isOperator && calcData.wasCalc) {
+    calcData.string = String(calcData.calc[0]);
+    calcData.calc = [calcData.calc[0], value];
   }
+
 
   console.log(calcData);
   return calcData;
