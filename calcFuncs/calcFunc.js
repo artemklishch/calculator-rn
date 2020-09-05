@@ -41,7 +41,7 @@ export const calcFunc = (startValue, value) => {
     calcData.wasCalc = false;
   }
   //plus-minus pressed
-  else if(value === "+/-" && calcData.calc.length < 3){
+  else if(value === "+/-" && (calcData.calc.length < 3 || (calcData.calc[0] === Number(calcData.string)))){
     if(calcData.calc[0] > 0){
       calcData.calc[0] = 0 - calcData.calc[0]
       calcData.string = String(calcData.calc[0])
@@ -49,8 +49,7 @@ export const calcFunc = (startValue, value) => {
       calcData.calc[0] = Number(Math.abs(calcData.calc[0]))
       calcData.string = String(calcData.calc[0])
     }
-  }
-  else if(value === "+/-" && calcData.calc.length === 3){
+  } else if(value === "+/-" && calcData.calc.length === 3 && calcData.calc[0] !== Number(calcData.string)){
     if(calcData.calc[2] > 0){
       calcData.calc[2] = Number("-" + calcData.calc[2])
       calcData.string = String(calcData.calc[2])
@@ -58,7 +57,7 @@ export const calcFunc = (startValue, value) => {
       calcData.calc[2] = Number(Math.abs(calcData.calc[2]))
       calcData.string = String(calcData.calc[2])
     }
-  }
+  } 
   //when pressed "." but nothing was pressed before
   else if (calcData.calc.length === 1 && !calcData.string && value === ".") {
     calcData.string = String(calcData.calc[0] + value);
@@ -120,14 +119,8 @@ export const calcFunc = (startValue, value) => {
   //when there are first value, chosen operator, second value, and pressed operator
   else if (calcData.calc.length === 3 && isOperator) {
     const result = calcOperatingFunc(calcData.calc[0], calcData.calc[1], calcData.calc[2]);
-    if (value === calcData.calc[1] && !calcData.wasCalc) {
-      calcData.string = String(result);
-      calcData.calc = [result, value];
-    } else {
-      calcData.calc[1] = value;
-      calcData.calc = [calcData.calc[0], value];
-      calcData.wasCalc = false;
-    }
+    calcData.string = String(result);
+    calcData.calc = [result, value];
     calcData.wasCalc = true;
   }
 
