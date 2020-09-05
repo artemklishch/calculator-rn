@@ -80,10 +80,10 @@ export const calcFunc = (startValue, value) => {
     calcData.calc[1] = value;
     calcData.wasCalc = true;
   }
-  //when there is value and pressed "%"
-  else if (calcData.calc.length === 1 && value === "%") {
-    calcData.calc[0] /= 100;
-    calcData.string = String(calcData.calc[0]);
+  //when pressed "%"
+  else if (value === "%") {
+      calcData.calc[0] /= 100;
+      calcData.string = String(calcData.calc[0]);
   }
   //when there are first value and chosen operator, and pressed something except operator and "."
   else if (
