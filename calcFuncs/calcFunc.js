@@ -89,7 +89,8 @@ export const calcFunc = (startValue, value) => {
     calcData.calc.length === 2 &&
     !isOperator &&
     calcData.wasCalc &&
-    value !== "."
+    value !== "." &&
+    value !== "="
   ) {
     calcData.wasCalc = false;
     calcData.string = String(value);
@@ -116,6 +117,8 @@ export const calcFunc = (startValue, value) => {
     calcData.calc[0] = result;
     calcData.string = String(result);
     calcData.wasCalc = true
+  }else if(calcData.calc.length === 2 && value === "="){
+    return calcData;
   }
   //when there are first value, chosen operator, second value, and pressed operator
   else if (calcData.calc.length === 3 && isOperator && !calcData.wasCalc) {
