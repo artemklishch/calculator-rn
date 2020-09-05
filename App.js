@@ -20,8 +20,6 @@ export default function App() {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>React Native calculator!</Text>
-
       <View style={styles.valueBlock}>
         <ScrollView horizontal style={styles.valueScrollBlock}>
           <Text style={styles.valueText}>

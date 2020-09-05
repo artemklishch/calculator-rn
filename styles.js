@@ -6,11 +6,6 @@ export default StyleSheet.create({
     flex: 1,
     paddingVertical: 20,
   },
-  title: {
-    color: "#fff",
-    fontSize: 24,
-    textAlign: "center",
-  },
   valueScrollBlock: {
     marginHorizontal: 25,
   },
